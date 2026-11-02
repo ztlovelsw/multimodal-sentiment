@@ -2,8 +2,8 @@
 node_modules/
 .pnpm-store/
 
-# 构建产物（如需部署 React 版请本地 `pnpm build` 后取 dist）
-react-app/dist/
+# 构建产物：dist 随仓库提交，服务器 clone 后可直接静态托管（构建：cd react-app && pnpm build）
+# react-app/dist/
 
 # 系统 / 编辑器
 .DS_Store
