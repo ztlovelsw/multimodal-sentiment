@@ -1,0 +1,13 @@
+# 依赖
+node_modules/
+.pnpm-store/
+
+# 构建产物（如需部署 React 版请本地 `pnpm build` 后取 dist）
+react-app/dist/
+
+# 系统 / 编辑器
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
