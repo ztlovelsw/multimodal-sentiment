@@ -48,6 +48,12 @@ nginx 静态站点（oracle 服务器）：
 sudo git clone https://github.com/ztlovelsw/multimodal-sentiment.git /opt/ms-demo
 ```
 
+更新线上版本（服务器已提供封装脚本）：
+
+```bash
+sudo ms-demo-deploy     # = git pull + nginx reload
+```
+
 ```nginx
 server {
     listen 80;
