@@ -54,15 +54,21 @@ sudo git clone https://github.com/ztlovelsw/multimodal-sentiment.git /opt/ms-dem
 sudo ms-demo-deploy     # = git pull + nginx reload
 ```
 
+站点根目录为 React 生产构建 `react-app/dist`（已随仓库提交，clone 即可托管）；旧的单文件版仍保留在 `/standalone.html`。
+
 ```nginx
 server {
-    listen 80;
+    listen 443 ssl http2;
     server_name ms-demo.techtao.tech;
-    root /opt/ms-demo;
-    index multimodal-sentiment.html;
-    location / { try_files $uri $uri/ /multimodal-sentiment.html; }
+    root /opt/ms-demo/react-app/dist;
+    index index.html;
+
+    location = /standalone.html { alias /opt/ms-demo/multimodal-sentiment.html; }
+    location / { try_files $uri $uri/ /index.html; }
 }
 ```
+
+改代码后发布：本地 `cd react-app && pnpm build`，提交 `dist` 并 push，再在服务器执行 `sudo ms-demo-deploy`。
 
 HTTPS 由 certbot 签发（Let's Encrypt），Cloudflare 代理模式。
 
